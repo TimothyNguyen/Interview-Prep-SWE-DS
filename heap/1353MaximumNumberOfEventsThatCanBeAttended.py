@@ -1,3 +1,6 @@
+import heapq
+
+
 class Solution:
     def maxEvents(self, A: List[List[int]]) -> int:
         A.sort(reverse=1)

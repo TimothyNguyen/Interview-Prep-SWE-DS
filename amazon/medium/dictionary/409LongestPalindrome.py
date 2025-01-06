@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         freq_map = defaultdict(int)

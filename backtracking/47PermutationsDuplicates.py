@@ -19,6 +19,10 @@ class Solution:
         backtrack(0)
         return sol
 '''
+from collections import Counter
+from typing import List
+
+
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         results = []

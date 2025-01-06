@@ -3,7 +3,7 @@ from typing import List
 
 
 class Solution:
-    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+    def validTree(self, edges: List[List[int]]) -> bool:
         graph = defaultdict(list)
         node = None
         for edge in edges:
@@ -20,8 +20,12 @@ class Solution:
                 if nei not in visited:
                     if has_cycle(nei, curr_node):
                         return True
-                elif nei != parent_node:
+                elif nei != parent_node: # if it's not the same, we know it's wrong
                     return True
             return False
-
-        return (not node and n == 1) or (not has_cycle(node, None) and len(visited) == n)
+    
+        for node in graph:
+            if node not in visited:
+                if has_cycle(node, None):
+                    return True
+        return False

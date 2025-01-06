@@ -10,7 +10,7 @@ class Solution:
                 num = candidates[idx]
                 if curr_num + num <= target:
                     curr_result.append(num)
-                    dfs(idx, curr_result, curr_num + num)
+                    dfs(idx + 1, curr_result, curr_num + num)
                     curr_result.pop()
                 else:
                     continue

@@ -35,6 +35,10 @@ Output:
  ["3","4","5","2","8","6","1","7","9"]]
 Explanation: The input board is shown above and the only valid solution is shown below:
 '''
+import collections
+from typing import List
+
+
 class Solution:
     def solveSudoku(self, board: List[List[str]]) -> None:
         """

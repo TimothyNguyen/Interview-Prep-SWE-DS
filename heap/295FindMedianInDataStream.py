@@ -40,4 +40,37 @@ class MedianFinder:
             return (self.minheap[0] - self.maxheap[0]) / 2
         else:
             return -self.maxheap[0]
+
+'''
+import heapq
+
+
+class MedianFinder:
+    def __init__(self):
+        self.min_heap = []
+        self.max_heap = []
+
+    def addNum(self, num: int) -> None:
+        if len(self.max_heap) == 0:
+            heapq.heappush(self.max_heap, -num)
+            return
         
+        heapq.heappush(self.min_heap, num)    
+        right_min_val = heapq.heappop(self.min_heap)
+        left_max_val = -heapq.heappop(self.max_heap)
+        if right_min_val < left_max_val:
+            heapq.heappush(self.max_heap, -right_min_val)
+            heapq.heappush(self.min_heap, left_max_val)
+        else:
+            heapq.heappush(self.max_heap, -left_max_val)
+            heapq.heappush(self.min_heap, right_min_val)
+
+    def findMedian(self) -> float:
+        if len(self.max_heap) == 0:
+            return 0
+        if (len(self.min_heap) + len(self.max_heap)) % 2 == 0:
+            return (-self.max_heap[0] + self.min_heap[0]) / 2
+        else:
+            return -self.max_heap[0]
+
+'''

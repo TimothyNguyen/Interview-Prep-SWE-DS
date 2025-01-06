@@ -1,3 +1,7 @@
+from bisect import bisect
+from typing import List
+
+
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         sub = []
