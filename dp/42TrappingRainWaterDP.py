@@ -1,25 +1,24 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        if len(height) < 1:
+        if len(height) == 0:
             return 0
-    
-        dp = [0] * len(height)
-        highest_left = height[0]
-        for i in range(1, len(height) - 1):
-            dp[i] = highest_left
-            highest_left = max(highest_left, height[i])
+        l = [0] * len(height)
+        r = [0] * len(height)
+        res = 0
         
-        highest_right = height[-1]
-        for i in range(len(height) - 1, 0, -1):
-            dp[i] = min(dp[i], highest_right)
-            highest_right = max(highest_right, height[i])
-            
-        ans = 0
-        for i in range(1, len(height) -1):
-            ans += max(0, dp[i] - height[i]) 
-        
-        return ans
+        n = len(height)
+        for i in range(0, n):
+            if i == 0:
+                l[i] = height[i]
+                r[len(height) - i - 1] = height[n - i - 1]
+            else:
+                l[i] = max(height[i], l[i-1])
+                r[n - i - 1] = max(height[n - i - 1], r[n - i])
 
+        for i in range(1, len(height)):
+            res += min(l[i], r[i]) - height[i]
+
+        return res
 
 '''
 left, right = 0, len(height) - 1
